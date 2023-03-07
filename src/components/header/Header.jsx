@@ -4,14 +4,25 @@ import "./Header.css";
 function Header() {
   return (
     <div className="header">
-      <div className="header-div">Dog Accessories Shop</div>
+      <div className="header-div">אתר לדוגמא</div>
       <div className="nav-div">
-        <span>חטיפים</span>
-        <span>צעצועים</span>
-        <span>מזון</span>
-        <span>רצועות</span>
-        <span>קולרים</span>
-        <span>עצמות</span>
+        <ul className="nav-div">
+          <a className="a" href=" ">
+            עמוד הבית
+          </a>
+          <a className="a" href=" ">
+            אודות
+          </a>
+          <a className="a" href=" ">
+            מוצרים
+          </a>
+          <a className="a" href=" ">
+            מאמרים
+          </a>
+          <a className="a" href=" ">
+            צור קשר
+          </a>
+        </ul>
       </div>
     </div>
   );

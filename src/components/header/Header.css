@@ -7,7 +7,7 @@
 }
 .header-div {
   height: 8vh;
-  width: 100%;
+  width: 70%;
   background: yellow;
   display: flex;
   align-items: center;
@@ -16,10 +16,14 @@
 }
 .nav-div {
   height: 4vh;
-  width: 100%;
+  width: 70%;
   background: red;
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 3.5rem;
+}
+.a {
+  text-decoration: none;
+  color: black;
 }

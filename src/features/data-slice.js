@@ -30,6 +30,7 @@ const initialState = {
     {
       id: 6,
       productName: "Collar H.S 20mm",
+      category: 1,
       productPrice: "20 ₪",
     },
   ],

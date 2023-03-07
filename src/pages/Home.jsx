@@ -8,12 +8,12 @@ const Home = () => {
 
   return (
     <div className="container general-page">
-      {data.map((m) => (
+      {/* {data.map((m) => (
         <div>
-          {m.id == 1 && <p>{m.productName}</p>}
+          <p>{m.productName}</p>
           <p>{m.productPrice}</p>
         </div>
-      ))}
+      ))} */}
     </div>
   );
 };
