@@ -6,7 +6,7 @@ function Header() {
     <div className="header">
       <div className="header-div">אתר לדוגמא</div>
       <div className="nav-div">
-        <ul className="nav-div">
+        <ul className="nav-div-links">
           <a className="a" href=" ">
             עמוד הבית
           </a>

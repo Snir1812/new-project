@@ -4,7 +4,7 @@ import "../components/pagesCss/GeneralPageCss.css";
 import { useSelector } from "react-redux";
 
 const Home = () => {
-  const data = useSelector((state) => state.data.data);
+  // const data = useSelector((state) => state.data.data);
 
   return (
     <div className="container general-page">

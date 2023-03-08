@@ -7,8 +7,8 @@
 }
 .header-div {
   height: 8vh;
-  width: 70%;
-  background: yellow;
+  width: 50%;
+  background: white;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -16,14 +16,31 @@
 }
 .nav-div {
   height: 4vh;
-  width: 70%;
-  background: red;
+  width: 50%;
+  background: rgba(255, 255, 255, 0.696);
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 3.5rem;
+}
+.nav-div-links {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2.5rem;
 }
 .a {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 10px;
   text-decoration: none;
   color: black;
+}
+.a:hover {
+  text-decoration: none;
+  color: rgba(0, 0, 0, 0.578);
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 15px -3px,
+    rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;
 }

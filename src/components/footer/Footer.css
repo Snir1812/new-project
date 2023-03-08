@@ -1,4 +1,9 @@
 .footer {
-  height: 10vh;
-  background: red;
+  height: 20vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: white;
+  display: flex;
+  font-size: 22px;
 }
