@@ -8,6 +8,7 @@ const Home = () => {
 
   return (
     <div className="container general-page">
+      Home Page
       {/* {data.map((m) => (
         <div>
           <p>{m.productName}</p>
