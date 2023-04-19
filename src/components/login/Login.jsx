@@ -18,9 +18,7 @@ function Login(form) {
           <label>Password</label>
           <input className="textInput" type="password" name="pass" required />
         </div>
-        <button className="buttonForm" onClick={form.toggleLoginForm}>
-          Submite
-        </button>
+        <button className="buttonForm">Submite</button>
       </form>
     </div>
   );

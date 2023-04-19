@@ -18,7 +18,7 @@ function App() {
   return (
     <div className="App">
       <Header toggleLoginForm={toggleLoginForm} />
-      {showLoginForm && <Login toggleLoginForm={toggleLoginForm} />}
+      {showLoginForm && <Login />}
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/About" element={<About />} />
