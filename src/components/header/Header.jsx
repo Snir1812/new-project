@@ -7,7 +7,7 @@ function Header(form) {
   return (
     <div className="header">
       <div className="header-div">
-        <button className="buttonLoginForm" onClick={form.toggleLoginForm}>
+        <button className="buttonLoginForm" onClick={form.onLoginClick}>
           Login
         </button>
         <a className="Logo" href=" ">

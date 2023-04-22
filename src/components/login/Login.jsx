@@ -8,6 +8,7 @@ function Login(form) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [token, setToken] = useState("");
+  const [error, setError] = useState("");
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -27,9 +28,20 @@ function Login(form) {
     })
       .then((response) => response.text())
       .then((data) => {
-        setToken(data);
-        localStorage.setItem("token", data);
-        console.log(localStorage.getItem("token"));
+        if (data === "User not found") {
+          setError("User not found");
+          // setError(null);
+        } else if (data === "UserName or Password wrong") {
+          setError("UserName or Password wrong");
+          // setError(null);
+        } else {
+          setToken(data);
+          localStorage.setItem("token", data);
+          console.log(localStorage.getItem("token"));
+          // setError(null);
+          // setError(null);
+          form.onLoginClick();
+        }
       })
       .catch((error) => console.error(error));
   };
@@ -37,9 +49,9 @@ function Login(form) {
   return (
     <div className="behindTheForm">
       <form className="loginForm" onSubmit={handleSubmit}>
-        {/* <button className="closeFormButton" onClick={form.toggleLoginForm}>
+        <button className="closeFormButton" onClick={form.onLoginClick}>
           <AiOutlineClose />
-        </button> */}
+        </button>
         <p className="headerForm">Login Form</p>
         <div className="labelDiv">
           <label htmlFor="username">Username</label>
@@ -64,6 +76,7 @@ function Login(form) {
             onChange={(event) => setPassword(event.target.value)}
           />
         </div>
+        {error && <p className="errorMessage">{error}</p>}
         <button className="buttonForm">Submite</button>
       </form>
     </div>

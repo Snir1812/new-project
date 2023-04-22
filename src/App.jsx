@@ -8,17 +8,23 @@ import About from "./pages/About";
 import Products from "./pages/Products";
 import Login from "./components/login/Login";
 import { useState } from "react";
+import jwtDecode from "jwt-decode";
 
 function App() {
   const [showLoginForm, setShowLoginForm] = useState(false);
+
+  const token = localStorage.getItem("token");
+  const decodedToken = jwtDecode(token);
+  console.log(decodedToken.given_name);
+  // console.log(localStorage.getItem("token"));
 
   const toggleLoginForm = () => {
     setShowLoginForm(!showLoginForm);
   };
   return (
     <div className="App">
-      <Header toggleLoginForm={toggleLoginForm} />
-      {showLoginForm && <Login />}
+      <Header onLoginClick={toggleLoginForm} />
+      {showLoginForm && <Login onLoginClick={toggleLoginForm} />}
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/About" element={<About />} />
