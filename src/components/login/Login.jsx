@@ -4,7 +4,7 @@ import { AiOutlineClose } from "react-icons/ai";
 import { useState } from "react";
 import jwt_decode from "jwt-decode";
 
-function Login(form) {
+function Login({ onCloseLoginClick, onSignupClick }) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [token, setToken] = useState("");
@@ -40,7 +40,7 @@ function Login(form) {
           console.log(localStorage.getItem("token"));
           // setError(null);
           // setError(null);
-          form.onLoginClick();
+          onCloseLoginClick();
         }
       })
       .catch((error) => console.error(error));
@@ -49,7 +49,7 @@ function Login(form) {
   return (
     <div className="behindTheForm">
       <form className="loginForm" onSubmit={handleSubmit}>
-        <button className="closeFormButton" onClick={form.onLoginClick}>
+        <button className="closeFormButton" onClick={onCloseLoginClick}>
           <AiOutlineClose />
         </button>
         <p className="headerForm">Login Form</p>
@@ -78,6 +78,7 @@ function Login(form) {
         </div>
         {error && <p className="errorMessage">{error}</p>}
         <button className="buttonForm">Submite</button>
+        <button onClick={onSignupClick}>I forgot password</button>
       </form>
     </div>
   );

@@ -3,11 +3,11 @@ import "./Header.css";
 import Login from "../login/Login";
 import { useState } from "react";
 
-function Header(form) {
+function Header({ onOpenLoginClick }) {
   return (
     <div className="header">
       <div className="header-div">
-        <button className="buttonLoginForm" onClick={form.onLoginClick}>
+        <button className="buttonLoginForm" onClick={onOpenLoginClick}>
           Login
         </button>
         <a className="Logo" href=" ">
