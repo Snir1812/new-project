@@ -2,13 +2,28 @@ import React from "react";
 import "./Login.css";
 import { AiOutlineClose } from "react-icons/ai";
 import { useState } from "react";
-import jwt_decode from "jwt-decode";
+// import jwt_decode from "jwt-decode";
+import { useDispatch } from "react-redux";
+import {
+  closeLoginForm,
+  openPasswordRecoveryForm,
+} from "../../features/form-slice";
 
-function Login({ onCloseLoginClick, onSignupClick }) {
+function Login() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [token, setToken] = useState("");
   const [error, setError] = useState("");
+
+  const dispatch = useDispatch();
+
+  const handleCloseLoginForm = () => {
+    dispatch(closeLoginForm());
+  };
+  const handleOpenPassCloseLogin = () => {
+    dispatch(closeLoginForm());
+    dispatch(openPasswordRecoveryForm());
+  };
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -35,12 +50,13 @@ function Login({ onCloseLoginClick, onSignupClick }) {
           setError("UserName or Password wrong");
           // setError(null);
         } else {
+          setError("User Connected");
           setToken(data);
           localStorage.setItem("token", data);
           console.log(localStorage.getItem("token"));
           // setError(null);
           // setError(null);
-          onCloseLoginClick();
+          // onCloseLoginClick();
         }
       })
       .catch((error) => console.error(error));
@@ -49,7 +65,7 @@ function Login({ onCloseLoginClick, onSignupClick }) {
   return (
     <div className="behindTheForm">
       <form className="loginForm" onSubmit={handleSubmit}>
-        <button className="closeFormButton" onClick={onCloseLoginClick}>
+        <button className="closeFormButton" onClick={handleCloseLoginForm}>
           <AiOutlineClose />
         </button>
         <p className="headerForm">Login Form</p>
@@ -78,7 +94,7 @@ function Login({ onCloseLoginClick, onSignupClick }) {
         </div>
         {error && <p className="errorMessage">{error}</p>}
         <button className="buttonForm">Submite</button>
-        <button onClick={onSignupClick}>I forgot password</button>
+        <button onClick={handleOpenPassCloseLogin}>I forgot password</button>
       </form>
     </div>
   );

@@ -1,13 +1,20 @@
 import React from "react";
 import "./Header.css";
-import Login from "../login/Login";
-import { useState } from "react";
+// import Login from "../login/Login";
+// import { useState } from "react";
+import { openLoginForm } from "../../features/form-slice";
+import { useDispatch } from "react-redux";
 
-function Header({ onOpenLoginClick }) {
+function Header() {
+  const dispatch = useDispatch();
+
+  const handleOpenLoginForm = () => {
+    dispatch(openLoginForm());
+  };
   return (
     <div className="header">
       <div className="header-div">
-        <button className="buttonLoginForm" onClick={onOpenLoginClick}>
+        <button className="buttonLoginForm" onClick={handleOpenLoginForm}>
           Login
         </button>
         <a className="Logo" href=" ">
