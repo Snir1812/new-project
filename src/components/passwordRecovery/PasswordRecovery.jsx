@@ -48,7 +48,7 @@ function PasswordRecovery() {
   };
 
   return (
-    <form className="loginForm" onSubmit={handleSubmit}>
+    <form className="passwordRecoveryForm" onSubmit={handleSubmit}>
       <p className="headerForm">New Password</p>
       <div className="labelDiv">
         <label>Username or email</label>

@@ -5,6 +5,7 @@ export const formSlice = createSlice({
   initialState: {
     showLoginForm: false,
     showPasswordRecoveryForm: false,
+    showSignupForm: false,
   },
   reducers: {
     openLoginForm: (state) => {
@@ -19,6 +20,12 @@ export const formSlice = createSlice({
     closePasswordRecoveryForm: (state) => {
       state.showPasswordRecoveryForm = false;
     },
+    openSignupForm: (state) => {
+      state.showSignupForm = true;
+    },
+    closeSignupForm: (state) => {
+      state.showSignupForm = false;
+    },
   },
 });
 
@@ -28,4 +35,6 @@ export const {
   closeLoginForm,
   openPasswordRecoveryForm,
   closePasswordRecoveryForm,
+  openSignupForm,
+  closeSignupForm,
 } = formSlice.actions;

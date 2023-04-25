@@ -9,23 +9,34 @@ import Products from "./pages/Products";
 import Login from "./components/login/Login";
 import PasswordRecovery from "./components/passwordRecovery/PasswordRecovery";
 import { useSelector } from "react-redux";
+import Signup from "./components/signup/Signup";
+import jwtDecode from "jwt-decode";
 
 function App() {
   const showLoginForm = useSelector((state) => state.form.showLoginForm);
   const showPasswordRecoveryForm = useSelector(
     (state) => state.form.showPasswordRecoveryForm
   );
+  const showSignupForm = useSelector((state) => state.form.showSignupForm);
 
-  // const token = localStorage.getItem("token");
-  // const decodedToken = jwtDecode(token);
-  // console.log(decodedToken.given_name);
-  // console.log(localStorage.getItem("token"));
+  // localStorage.removeItem("token");
+
+  const token = localStorage.getItem("token");
+  if (token) {
+    const decodedToken = jwtDecode(token);
+    const currentTime = Date.now() / 1000;
+    if (decodedToken.exp < currentTime) {
+      // Token has expired, clear the local storage item
+      localStorage.removeItem("token");
+    }
+  }
 
   return (
     <div className="App">
       <Header />
       {showLoginForm && <Login />}
       {showPasswordRecoveryForm && <PasswordRecovery />}
+      {showSignupForm && <Signup />}
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/About" element={<About />} />

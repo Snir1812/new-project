@@ -7,13 +7,14 @@ import { useDispatch } from "react-redux";
 import {
   closeLoginForm,
   openPasswordRecoveryForm,
+  openSignupForm,
 } from "../../features/form-slice";
 
 function Login() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [token, setToken] = useState("");
-  const [error, setError] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
 
   const dispatch = useDispatch();
 
@@ -23,6 +24,10 @@ function Login() {
   const handleOpenPassCloseLogin = () => {
     dispatch(closeLoginForm());
     dispatch(openPasswordRecoveryForm());
+  };
+  const handleOpenSignupCloseLogin = () => {
+    dispatch(closeLoginForm());
+    dispatch(openSignupForm());
   };
 
   const handleSubmit = (event) => {
@@ -44,16 +49,18 @@ function Login() {
       .then((response) => response.text())
       .then((data) => {
         if (data === "User not found") {
-          setError("User not found");
+          setErrorMessage("User not found");
           // setError(null);
         } else if (data === "UserName or Password wrong") {
-          setError("UserName or Password wrong");
+          setErrorMessage("UserName or Password wrong");
           // setError(null);
         } else {
-          setError("User Connected");
+          setErrorMessage("User Connected");
           setToken(data);
           localStorage.setItem("token", data);
-          console.log(localStorage.getItem("token"));
+          window.location.reload(false);
+
+          // console.log(localStorage.getItem("token"));
           // setError(null);
           // setError(null);
           // onCloseLoginClick();
@@ -92,9 +99,12 @@ function Login() {
             onChange={(event) => setPassword(event.target.value)}
           />
         </div>
-        {error && <p className="errorMessage">{error}</p>}
+        {errorMessage && <p className="errorMessage">{errorMessage}</p>}
         <button className="buttonForm">Submite</button>
-        <button onClick={handleOpenPassCloseLogin}>I forgot password</button>
+        <div>
+          <button onClick={handleOpenPassCloseLogin}>I forgot password</button>
+          <button onClick={handleOpenSignupCloseLogin}>Sign up</button>
+        </div>
       </form>
     </div>
   );

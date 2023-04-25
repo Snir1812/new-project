@@ -4,6 +4,7 @@ import "./Header.css";
 // import { useState } from "react";
 import { openLoginForm } from "../../features/form-slice";
 import { useDispatch } from "react-redux";
+import jwtDecode from "jwt-decode";
 
 function Header() {
   const dispatch = useDispatch();
@@ -11,12 +12,24 @@ function Header() {
   const handleOpenLoginForm = () => {
     dispatch(openLoginForm());
   };
+
+  const token = localStorage.getItem("token"); // Get the token value from localStorage
+  const decodedToken = token ? jwtDecode(token) : null; // Add null check here
+  const tokenName = decodedToken ? decodedToken.given_name : ""; // Add null check here
+
   return (
     <div className="header">
       <div className="header-div">
-        <button className="buttonLoginForm" onClick={handleOpenLoginForm}>
+        {/* <button className="buttonLoginForm" onClick={handleOpenLoginForm}>
           Login
-        </button>
+        </button> */}
+        {token ? (
+          <button className="buttonLoginForm">Hey {tokenName}</button>
+        ) : (
+          <button className="buttonLoginForm" onClick={handleOpenLoginForm}>
+            Login
+          </button>
+        )}
         <a className="Logo" href=" ">
           Logo
         </a>
