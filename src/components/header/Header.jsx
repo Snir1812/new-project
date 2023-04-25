@@ -13,6 +13,13 @@ function Header() {
     dispatch(openLoginForm());
   };
 
+  const handleLogout = () => {
+    localStorage.clear(); // Clear all items from local storage
+    window.location.reload(false);
+
+    // Perform any other logout actions here, such as redirecting to a login page
+  };
+
   const token = localStorage.getItem("token"); // Get the token value from localStorage
   const decodedToken = token ? jwtDecode(token) : null; // Add null check here
   const tokenName = decodedToken ? decodedToken.given_name : ""; // Add null check here
@@ -24,7 +31,10 @@ function Header() {
           Login
         </button> */}
         {token ? (
-          <button className="buttonLoginForm">Hey {tokenName}</button>
+          <div>
+            <button className="buttonLoginForm">Hey {tokenName}</button>
+            <button onClick={handleLogout}>Log out</button>
+          </div>
         ) : (
           <button className="buttonLoginForm" onClick={handleOpenLoginForm}>
             Login

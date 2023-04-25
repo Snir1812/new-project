@@ -21,15 +21,15 @@ function App() {
 
   // localStorage.removeItem("token");
 
-  const token = localStorage.getItem("token");
-  if (token) {
-    const decodedToken = jwtDecode(token);
-    const currentTime = Date.now() / 1000;
-    if (decodedToken.exp < currentTime) {
-      // Token has expired, clear the local storage item
-      localStorage.removeItem("token");
-    }
-  }
+  // const token = localStorage.getItem("token");
+  // if (token) {
+  //   const decodedToken = jwtDecode(token);
+  //   const currentTime = Date.now() / 1000;
+  //   if (decodedToken.exp < currentTime) {
+  //     // Token has expired, clear the local storage item
+  //     localStorage.removeItem("token");
+  //   }
+  // }
 
   return (
     <div className="App">
