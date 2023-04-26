@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { closeSignupForm, openLoginForm } from "../../features/form-slice";
 import { useDispatch } from "react-redux";
-import "./Signup.css";
+import "../generalCss/FormsCss.css";
 
 function Signup() {
   const [userName, setUserName] = useState("");
@@ -46,7 +46,8 @@ function Signup() {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="signupForm">
+    <form onSubmit={handleSubmit} className="form">
+      <p className="headerForm">Sign Up</p>
       <div className="labelDiv">
         <label htmlFor="username">Username</label>
         <input
@@ -101,7 +102,12 @@ function Signup() {
       <button className="buttonForm" type="submit">
         Sign Up
       </button>
-      <button onClick={handleOpenLoginCloseSignup}>Log in</button>
+      <button
+        onClick={handleOpenLoginCloseSignup}
+        className="navigationButtons"
+      >
+        Log in
+      </button>
     </form>
   );
 }

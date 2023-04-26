@@ -1,6 +1,6 @@
 import React from "react";
 import { useState } from "react";
-import "./PasswordRecovery.css";
+import "../generalCss/FormsCss.css";
 import { useDispatch } from "react-redux";
 import {
   openLoginForm,
@@ -22,12 +22,6 @@ function PasswordRecovery() {
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    // const url = "https://localhost:7149/api/Users";
-    // const data = {
-    //   userNameOrEmail: usernameOrEmail,
-    //   password: password,
-    // };
-
     const url = `
     https://localhost:7149/api/Users?userNameOrEmail=${encodeURIComponent(
       usernameOrEmail
@@ -48,7 +42,7 @@ function PasswordRecovery() {
   };
 
   return (
-    <form className="passwordRecoveryForm" onSubmit={handleSubmit}>
+    <form className="form" onSubmit={handleSubmit}>
       <p className="headerForm">New Password</p>
       <div className="labelDiv">
         <label>Username or email</label>
@@ -77,7 +71,9 @@ function PasswordRecovery() {
       <button className="buttonForm" type="submit">
         Submite
       </button>
-      <button onClick={handleOpenLoginClosePass}>Log in</button>
+      <button onClick={handleOpenLoginClosePass} className="navigationButtons">
+        Log in
+      </button>
     </form>
   );
 }
