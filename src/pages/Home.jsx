@@ -1,5 +1,5 @@
 import React from "react";
-import "../components/pagesCss/GeneralPageCss.css";
+import "../components/generalCss/GeneralPageCss.css";
 import { useSelector } from "react-redux";
 
 const Home = () => {

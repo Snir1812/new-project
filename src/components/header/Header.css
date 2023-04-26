@@ -59,9 +59,15 @@
   box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 15px -3px,
     rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;
 }
-.buttonLoginForm {
+.loginDiv {
   position: absolute;
   left: 5%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+.formButtons {
   /* height: 30px; */
   /* width: 60px; */
   padding: 5px 10px;
@@ -73,6 +79,19 @@
   color: black;
   background: #ffeddb;
 }
-.buttonLoginForm:hover {
+.formButtons:hover {
+  background: #ffeddba8;
+}
+.logoutButton {
+  padding: 3px 8px;
+  border: 1px solid rgba(0, 0, 0, 0.263);
+  border-radius: 20px;
+  font-size: 16px;
+  cursor: pointer;
+  text-decoration: none;
+  color: black;
+  background: #ffeddb;
+}
+.logoutButton:hover {
   background: #ffeddba8;
 }

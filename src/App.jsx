@@ -11,6 +11,7 @@ import PasswordRecovery from "./components/passwordRecovery/PasswordRecovery";
 import { useSelector } from "react-redux";
 import Signup from "./components/signup/Signup";
 import jwtDecode from "jwt-decode";
+import Dashboard from "./pages/Dashboard";
 
 function App() {
   const showLoginForm = useSelector((state) => state.form.showLoginForm);
@@ -39,6 +40,7 @@ function App() {
       {showSignupForm && <Signup />}
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/Dashboard" element={<Dashboard />} />
         <Route path="/About" element={<About />} />
         <Route path="/Products" element={<Products />} />
       </Routes>

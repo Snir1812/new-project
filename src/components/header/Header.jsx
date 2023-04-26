@@ -23,6 +23,7 @@ function Header() {
   const token = localStorage.getItem("token"); // Get the token value from localStorage
   const decodedToken = token ? jwtDecode(token) : null; // Add null check here
   const tokenName = decodedToken ? decodedToken.given_name : ""; // Add null check here
+  const isAdmin = decodedToken?.Role === "Admin";
 
   return (
     <div className="header">
@@ -31,14 +32,18 @@ function Header() {
           Login
         </button> */}
         {token ? (
-          <div>
-            <button className="buttonLoginForm">Hey {tokenName}</button>
-            <button onClick={handleLogout}>Log out</button>
+          <div className="loginDiv">
+            <button className="formButtons">Hey {tokenName}</button>
+            <button className="logoutButton" onClick={handleLogout}>
+              Log out
+            </button>
           </div>
         ) : (
-          <button className="buttonLoginForm" onClick={handleOpenLoginForm}>
-            Login
-          </button>
+          <div className="loginDiv">
+            <button className="formButtons" onClick={handleOpenLoginForm}>
+              Login
+            </button>
+          </div>
         )}
         <a className="Logo" href=" ">
           Logo
@@ -61,6 +66,11 @@ function Header() {
           <a className="a" href="/">
             עמוד הבית
           </a>
+          {isAdmin && (
+            <a className="a" style={{ color: "red" }} href="/Dashboard">
+              Dashboard
+            </a>
+          )}
         </ul>
       </div>
     </div>
