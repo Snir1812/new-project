@@ -21,7 +21,7 @@ function Signup() {
   const handleSubmit = async (event) => {
     event.preventDefault();
 
-    const url = "https://localhost:7149/api/Users";
+    const url = "https://localhost:7201/api/Users";
 
     const newUser = {
       userName: userName,
@@ -74,7 +74,7 @@ function Signup() {
           type="text"
           className="textInput"
           required
-          value={password}
+          value={email}
           onChange={(event) => setEmail(event.target.value)}
         />
       </div>

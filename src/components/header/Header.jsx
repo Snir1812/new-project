@@ -31,7 +31,7 @@ function Header() {
         {/* <button className="buttonLoginForm" onClick={handleOpenLoginForm}>
           Login
         </button> */}
-        {token ? (
+        {decodedToken ? (
           <div className="loginDiv">
             <button className="formButtons">Hey {tokenName}</button>
             <button className="logoutButton" onClick={handleLogout}>

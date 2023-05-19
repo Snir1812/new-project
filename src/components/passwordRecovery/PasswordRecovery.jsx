@@ -23,7 +23,7 @@ function PasswordRecovery() {
     event.preventDefault();
 
     const url = `
-    https://localhost:7149/api/Users?userNameOrEmail=${encodeURIComponent(
+    https://localhost:7201/api/Users?userNameOrEmail=${encodeURIComponent(
       usernameOrEmail
     )}&password=${encodeURIComponent(password)}
     `;

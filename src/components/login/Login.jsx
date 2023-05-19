@@ -32,7 +32,7 @@ function Login() {
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    const url = "https://localhost:7149/api/Authentication";
+    const url = "https://localhost:7201/api/Authentication";
     const data = {
       userName: username,
       password: password,
@@ -45,18 +45,17 @@ function Login() {
         "Content-Type": "application/json",
       },
     })
-      .then((response) => response.text())
-      .then((data) => {
-        if (data === "User not found") {
-          setErrorMessage("User not found");
-        } else if (data === "UserName or Password wrong") {
-          setErrorMessage("UserName or Password wrong");
-        } else {
-          setErrorMessage("User Connected");
-          setToken(data);
-          localStorage.setItem("token", data);
-          window.location.reload(false);
+      .then((res) => {
+        if (!res.ok) {
+          throw new Error(res.status);
         }
+        return res.text();
+      })
+      .then((data) => {
+        setErrorMessage("User Connected");
+        setToken(data);
+        localStorage.setItem("token", data);
+        window.location.reload(false);
       })
       .catch((error) => console.error(error));
   };
