@@ -57,7 +57,10 @@ function Login() {
         localStorage.setItem("token", data);
         window.location.reload(false);
       })
-      .catch((error) => console.error(error));
+      .catch((error) => {
+        console.error(error);
+        setErrorMessage("Error user Connection !");
+      });
   };
 
   return (
