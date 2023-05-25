@@ -68,106 +68,105 @@ function NewProduct() {
     },
   });
 
-  return (
-    <React.Fragment>
-      {showProductForm && (
-        <div className="addEditTable">
-          <span className="title">
-            {productToEdit ? "Edit" : "New"} Product
-          </span>
-          <form onSubmit={formik.handleSubmit} className="addEditForm">
-            <div className="formColumn">
-              <label htmlFor="Name" className="formLabel">
-                Name:
-              </label>
-              <div className="col-sm-2">
-                <input
-                  type="text"
-                  name="Name"
-                  onChange={formik.handleChange}
-                  onBlur={formik.handleBlur}
-                  value={formik.values.Name}
-                  className="form-control"
-                  id="Name"
-                />
-                {formik.touched.Name && formik.errors.Name && (
-                  <div className="error">{formik.errors.Name}</div>
-                )}
-              </div>
+  return [
+    showProductForm && (
+      <div className="addEditTable">
+        <span className="title">{productToEdit ? "Edit" : "New"} Product</span>
+        <form onSubmit={formik.handleSubmit} className="addEditForm">
+          <div className="formColumn">
+            <label htmlFor="Name" className="formLabel">
+              Name:
+            </label>
+            <div className="col-sm-2">
+              <input
+                type="text"
+                name="Name"
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+                value={formik.values.Name}
+                className="form-control"
+                id="Name"
+              />
+              {formik.touched.Name && formik.errors.Name && (
+                <div className="error">{formik.errors.Name}</div>
+              )}
             </div>
-            <div className="formColumn">
-              <label htmlFor="Description" className="formLabel">
-                Description:
-              </label>
-              <div className="col-sm-2">
-                <input
-                  type="text"
-                  name="Description"
-                  onChange={formik.handleChange}
-                  onBlur={formik.handleBlur}
-                  value={formik.values.Description}
-                  className="form-control"
-                  id="Description"
-                />
-                {formik.touched.Description && formik.errors.Description && (
-                  <div className="error">{formik.errors.Description}</div>
-                )}
-              </div>
+          </div>
+          <div className="formColumn">
+            <label htmlFor="Description" className="formLabel">
+              Description:
+            </label>
+            <div className="col-sm-2">
+              <input
+                type="text"
+                name="Description"
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+                value={formik.values.Description}
+                className="form-control"
+                id="Description"
+              />
+              {formik.touched.Description && formik.errors.Description && (
+                <div className="error">{formik.errors.Description}</div>
+              )}
             </div>
-            <div className="formColumn">
-              <label htmlFor="ImageName" className="formLabel">
-                ImageName:
-              </label>
-              <div className="col-sm-2">
-                <input
-                  type="text"
-                  name="ImageName"
-                  onChange={formik.handleChange}
-                  onBlur={formik.handleBlur}
-                  value={formik.values.ImageName}
-                  className="form-control"
-                  id="ImageName"
-                />
-                {formik.touched.ImageName && formik.errors.ImageName && (
-                  <div className="error">{formik.errors.ImageName}</div>
-                )}
-              </div>
+          </div>
+          <div className="formColumn">
+            <label htmlFor="ImageName" className="formLabel">
+              Image:
+            </label>
+            <div className="col-sm-2">
+              <input
+                type="file"
+                name="ImageFile"
+                onChange={(event) => {
+                  formik.setFieldValue(
+                    "ImageFile",
+                    event.currentTarget.files[0]
+                  );
+                }}
+                className="form-control"
+                id="ImageFile"
+              />
+              {formik.touched.ImageFile && formik.errors.ImageFile && (
+                <div className="error">{formik.errors.ImageFile}</div>
+              )}
             </div>
-            <div className="formColumn">
-              <label htmlFor="Rating" className="formLabel">
-                Rating:
-              </label>
-              <div className="col-sm-2">
-                <input
-                  type="text"
-                  name="Rating"
-                  onChange={formik.handleChange}
-                  onBlur={formik.handleBlur}
-                  value={formik.values.Rating}
-                  className="form-control"
-                  id="Rating"
-                />
-                {formik.touched.Rating && formik.errors.Rating && (
-                  <div className="error">{formik.errors.Rating}</div>
-                )}
-              </div>
+          </div>
+          <div className="formColumn">
+            <label htmlFor="Rating" className="formLabel">
+              Rating:
+            </label>
+            <div className="col-sm-2">
+              <input
+                type="text"
+                name="Rating"
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+                value={formik.values.Rating}
+                className="form-control"
+                id="Rating"
+              />
+              {formik.touched.Rating && formik.errors.Rating && (
+                <div className="error">{formik.errors.Rating}</div>
+              )}
             </div>
-            <div className="mb-2">
-              <button className="btn btn-primary" type="submit">
-                Save
-              </button>
-            </div>
-          </form>
-        </div>
-      )}
-      <button
-        className="addCancelButton"
-        onClick={() => dispatch(toggleProductForm())}
-      >
-        {showProductForm ? <ImCancelCircle /> : <GrAdd />}
-      </button>
-    </React.Fragment>
-  );
+          </div>
+          <div className="mb-2">
+            <button className="btn btn-primary" type="submit">
+              Save
+            </button>
+          </div>
+        </form>
+      </div>
+    ),
+    <button
+      className="addCancelButton"
+      onClick={() => dispatch(toggleProductForm())}
+    >
+      {showProductForm ? <ImCancelCircle /> : <GrAdd />}
+    </button>,
+  ];
 }
 
 export default NewProduct;
