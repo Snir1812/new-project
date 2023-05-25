@@ -23,7 +23,8 @@ function Header() {
   const token = localStorage.getItem("token"); // Get the token value from localStorage
   const decodedToken = token ? jwtDecode(token) : null; // Add null check here
   const tokenName = decodedToken ? decodedToken.given_name : ""; // Add null check here
-  const isAdmin = decodedToken?.Role === "Admin";
+  const isAdmin = decodedToken?.role === "Admin";
+  // console.log(isAdmin);
 
   return (
     <div className="header">

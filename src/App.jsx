@@ -1,4 +1,3 @@
-import React from "react";
 import "./App.css";
 import { Route, Routes } from "react-router-dom";
 import Home from "./pages/Home";
@@ -8,10 +7,12 @@ import About from "./pages/About";
 import Products from "./pages/Products";
 import Login from "./components/login/Login";
 import PasswordRecovery from "./components/passwordRecovery/PasswordRecovery";
-import { useSelector } from "react-redux";
 import Signup from "./components/signup/Signup";
 import jwtDecode from "jwt-decode";
 import Dashboard from "./pages/Dashboard";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchProducts } from "./features/form-slice";
 
 function App() {
   const showLoginForm = useSelector((state) => state.form.showLoginForm);
@@ -20,17 +21,13 @@ function App() {
   );
   const showSignupForm = useSelector((state) => state.form.showSignupForm);
 
-  // localStorage.removeItem("token");
+  const dispatch = useDispatch();
 
-  // const token = localStorage.getItem("token");
-  // if (token) {
-  //   const decodedToken = jwtDecode(token);
-  //   const currentTime = Date.now() / 1000;
-  //   if (decodedToken.exp < currentTime) {
-  //     // Token has expired, clear the local storage item
-  //     localStorage.removeItem("token");
-  //   }
-  // }
+  useEffect(() => {
+    dispatch(fetchProducts());
+  }, [dispatch]);
+
+  const isLoading = useSelector((state) => state.form.isLoading);
 
   return (
     <div className="App">
