@@ -113,23 +113,20 @@ function NewProduct() {
           </div>
           <div className="formColumn">
             <label htmlFor="ImageName" className="formLabel">
-              Image:
+              ImageName:
             </label>
             <div className="col-sm-2">
               <input
-                type="file"
-                name="ImageFile"
-                onChange={(event) => {
-                  formik.setFieldValue(
-                    "ImageFile",
-                    event.currentTarget.files[0]
-                  );
-                }}
+                type="text"
+                name="ImageName"
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+                value={formik.values.ImageName}
                 className="form-control"
-                id="ImageFile"
+                id="ImageName"
               />
-              {formik.touched.ImageFile && formik.errors.ImageFile && (
-                <div className="error">{formik.errors.ImageFile}</div>
+              {formik.touched.ImageName && formik.errors.ImageName && (
+                <div className="error">{formik.errors.ImageName}</div>
               )}
             </div>
           </div>

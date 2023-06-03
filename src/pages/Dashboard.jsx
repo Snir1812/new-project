@@ -10,9 +10,8 @@ import ProductRow from "../components/ProductRow";
 import AddEditProduct from "../components/productCRUD/AddEditProduct";
 
 function Dashboard() {
-  const token = localStorage.getItem("token"); // Get the token value from localStorage
-  const decodedToken = token ? jwtDecode(token) : null; // Add null check here
-  //   const tokenName = decodedToken ? decodedToken.given_name : ""; // Add null check here
+  const token = localStorage.getItem("token");
+  const decodedToken = token ? jwtDecode(token) : null;
   const isAdmin = decodedToken?.role === "Admin";
 
   const products = useSelector((state) => state.form.products);

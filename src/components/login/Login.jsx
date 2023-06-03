@@ -12,7 +12,7 @@ import {
 function Login() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const [token, setToken] = useState("");
+  // const [token, setToken] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
 
   const dispatch = useDispatch();
@@ -53,7 +53,7 @@ function Login() {
       })
       .then((data) => {
         setErrorMessage("User Connected");
-        setToken(data);
+        // setToken(data);
         localStorage.setItem("token", data);
         window.location.reload(false);
       })

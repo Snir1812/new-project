@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   products: [],
-  token: sessionStorage.getItem("token"),
+  // token: sessionStorage.getItem("token"),
   isLoading: false,
   isError: false,
   showLoginForm: false,

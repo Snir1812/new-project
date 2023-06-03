@@ -27,7 +27,15 @@ function App() {
     dispatch(fetchProducts());
   }, [dispatch]);
 
-  const isLoading = useSelector((state) => state.form.isLoading);
+  const token = localStorage.getItem("token");
+  if (token) {
+    const decodedToken = jwtDecode(token);
+    const expirationTime = decodedToken.exp * 1000;
+
+    if (Date.now() >= expirationTime) {
+      localStorage.removeItem("token");
+    }
+  }
 
   return (
     <div className="App">
